@@ -12,8 +12,11 @@ function ctm_add_int(in_lanes,out_lanes,cells)
 % declare the variables
 global ctm_valid ctm_cells ctm_lanes ctm_intersections
 
-if !ctm_valid
+if ~ctm_valid
     error("The CTM has not been initialized.");
+end
+if ctm_sim
+    error("No construction after starting the simulation.");
 end
 
 n_cell = length(ctm_cells);
@@ -29,11 +32,13 @@ for i=1:length(out_lanes)
 end
 
 n = size(cells,1);
-c_cap = cell(1,n); c_rate = cell(1,n);
-for i=1:n
-    c_cap(i) = cells(i,1);
-    c_rate(i) = cells(i,2);
-end
+%c_cap = cell(1,n); c_rate = cell(1,n);
+%for i=1:n
+%    c_cap{i} = cells(i,1);
+%    c_rate{i} = cells(i,2);
+%end
+c_cap = num2cell(cells(:,1));
+c_rate = num2cell(cells(:,2));
 ctm_cells(n_cell+1:n_cell+n) = struct('type',0,'rate',c_rate,'cap',c_cap,...
                                       'length',0,'pos_in',0,'pos_out',0,'in',0,'out',0);
 inner_cells = n_cell+1:n_cell+n;

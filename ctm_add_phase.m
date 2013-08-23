@@ -11,21 +11,25 @@ function ctm_add_phase(index,links)
 % declare the variables
 global ctm_valid ctm_links ctm_intersections
 
-if !ctm_valid
+if ~ctm_valid
     error("The CTM has not been initialized.");
+end
+if ctm_sim
+    error("No construction after starting the simulation.");
 end
 
 n_link = length(ctm_links);
 n = size(links,1);
 
-l_type = cell(1:n);
-l_cells = cell(1:n);
-l_p = cell(1:n);
+%l_type = cell(1:n);
+l_type = num2cell(links(:,1));
+l_cells = cell(n,1);
+l_p = cell(n,1);
 for i=1:n
-    l_type(i) = links(i,1);
-    switch l_type(i)
+%    l_type{i} = links(i,1);
+    switch l_type{i}
     case 0
-        l_p(i) = 1;
+        l_p{i} = 1;
         switch links(i,3)
         case 0
             a = ctm_intersections(index).cells(links(i,4));
@@ -48,11 +52,11 @@ for i=1:n
             b = ctm_intersections(index).out_cells(links(i,6));
             break;
         end
-        l_cells(i) = [a,b];
+        l_cells{i} = [a,b];
         break;
     case 1
     case 2
-        l_p(i) = links(i,2);
+        l_p{i} = links(i,2);
         switch links(i,3)
         case 0
             a = ctm_intersections(index).cells(links(i,4));
@@ -86,7 +90,7 @@ for i=1:n
             c = ctm_intersections(index).out_cells(links(i,8));
             break;
         end
-        l_cells(i) = [a,b,c];
+        l_cells{i} = [a,b,c];
         break;
     end
 end
