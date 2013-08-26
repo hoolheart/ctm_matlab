@@ -1,10 +1,11 @@
-% @name: ctm_read_lanes
-% @objective: read the lengths of all lanes.
+% @name: ctm_add_inputs
+% @objective: add impulsive input to the lanes.
 % @author: Huide ZHOU
 % @institute: Lab IRTES-SeT, UTBM, France
-% @date: AUG 23rd, 2013
+% @date: AUG 26th, 2013
 
-function queues = ctm_read_lanes()
+function ctm_add_inputs(inputs)
+% inputs: impulsive inputs to all lanes
 
 % declare the variables
 global ctm_valid ctm_cells ctm_lanes
@@ -13,13 +14,9 @@ if ~ctm_valid
     error('The CTM has not been initialized.');
 end
 
-queues = zeros(length(ctm_lanes),1);
 for i=1:length(ctm_lanes)
     if ctm_lanes(i).type == 2
         continue;
     end
-    for j=ctm_lanes(i).o_cell:ctm_lanes(i).d_cell
-        queues(i) = queues(i)+ctm_cells(j).length;
-    end
+    ctm_cells(ctm_lanes(i).in_cell).length = ctm_cells(ctm_lanes(i).in_cell).length+inputs(i);
 end
-

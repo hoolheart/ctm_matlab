@@ -10,7 +10,7 @@ function c_lens = ctm_read_cells()
 global ctm_valid ctm_cells
 
 if ~ctm_valid
-    error("The CTM has not been initialized.");
+    error('The CTM has not been initialized.');
 end
 
 c_lens = zeros(length(ctm_cells),1);

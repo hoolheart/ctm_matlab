@@ -7,16 +7,16 @@
 function ctm_add_int(in_lanes,out_lanes,cells)
 % in_lanes: list of input lanes
 % out_lanes: list of output lanes
-% cells: information of the inner cells of the intersection
+% cells: information of the inner cells of the intersection [cap rate;...]
 
 % declare the variables
-global ctm_valid ctm_cells ctm_lanes ctm_intersections
+global ctm_valid ctm_sim ctm_cells ctm_lanes ctm_intersections
 
 if ~ctm_valid
-    error("The CTM has not been initialized.");
+    error('The CTM has not been initialized.');
 end
 if ctm_sim
-    error("No construction after starting the simulation.");
+    error('No construction after starting the simulation.');
 end
 
 n_cell = length(ctm_cells);

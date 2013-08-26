@@ -10,10 +10,10 @@ function ctm_stop()
 global ctm_valid ctm_sim
 
 if ~ctm_valid
-    error("The CTM has not been initialized.");
+    error('The CTM has not been initialized.');
 end
 if ~ctm_sim
-    error("The simulation has not been started.");
+    error('The simulation has not been started.');
 end
 
 ctm_sim = false;

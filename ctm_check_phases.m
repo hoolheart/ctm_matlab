@@ -10,7 +10,7 @@ function is_valid = ctm_check_phases()
 global ctm_valid ctm_intersections
 
 if ~ctm_valid
-    error("The CTM has not been initialized.");
+    error('The CTM has not been initialized.');
 end
 
 is_valid = true;

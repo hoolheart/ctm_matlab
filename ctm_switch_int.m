@@ -11,14 +11,14 @@ function ctm_switch_int(index)
 global ctm_valid ctm_sim ctm_links ctm_intersections
 
 if ~ctm_valid
-    error("The CTM has not been initialized.");
+    error('The CTM has not been initialized.');
 end
 if ~ctm_sim
-    error("The simulation has not been started.");
+    error('The simulation has not been started.');
 end
 
 if index<1 || index>length(ctm_intersections)
-    error("Wrong index of intersection.");
+    error('Wrong index of intersection.');
 end
 
 f = ctm_intersections(index).phase;

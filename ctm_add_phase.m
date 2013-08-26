@@ -6,16 +6,16 @@
 
 function ctm_add_phase(index,links)
 % index: index of the intersection
-% links: information of the correspondent links of the phase
+% links: information of the correspondent links of the phase [type p c1t c1i c2t c2i c3t c3i;...]
 
 % declare the variables
-global ctm_valid ctm_links ctm_intersections
+global ctm_valid ctm_sim ctm_links ctm_intersections
 
 if ~ctm_valid
-    error("The CTM has not been initialized.");
+    error('The CTM has not been initialized.');
 end
 if ctm_sim
-    error("No construction after starting the simulation.");
+    error('No construction after starting the simulation.');
 end
 
 n_link = length(ctm_links);
@@ -33,65 +33,47 @@ for i=1:n
         switch links(i,3)
         case 0
             a = ctm_intersections(index).cells(links(i,4));
-            break;
         case 1
             a = ctm_intersections(index).in_cells(links(i,4));
-            break;
         case 2
             a = ctm_intersections(index).out_cells(links(i,4));
-            break;
         end
         switch links(i,5)
         case 0
             b = ctm_intersections(index).cells(links(i,6));
-            break;
         case 1
             b = ctm_intersections(index).in_cells(links(i,6));
-            break;
         case 2
             b = ctm_intersections(index).out_cells(links(i,6));
-            break;
         end
         l_cells{i} = [a,b];
-        break;
-    case 1
-    case 2
+    case {1, 2}
         l_p{i} = links(i,2);
         switch links(i,3)
         case 0
             a = ctm_intersections(index).cells(links(i,4));
-            break;
         case 1
             a = ctm_intersections(index).in_cells(links(i,4));
-            break;
         case 2
             a = ctm_intersections(index).out_cells(links(i,4));
-            break;
         end
         switch links(i,5)
         case 0
             b = ctm_intersections(index).cells(links(i,6));
-            break;
         case 1
             b = ctm_intersections(index).in_cells(links(i,6));
-            break;
         case 2
             b = ctm_intersections(index).out_cells(links(i,6));
-            break;
         end
         switch links(i,7)
         case 0
             c = ctm_intersections(index).cells(links(i,8));
-            break;
         case 1
             c = ctm_intersections(index).in_cells(links(i,8));
-            break;
         case 2
             c = ctm_intersections(index).out_cells(links(i,8));
-            break;
         end
         l_cells{i} = [a,b,c];
-        break;
     end
 end
 ctm_links(n_link+1:n_link+n) = struct('type',l_type,'cells',l_cells,'p',l_p,'access',0);

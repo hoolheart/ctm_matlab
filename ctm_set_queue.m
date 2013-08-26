@@ -12,17 +12,21 @@ function ctm_set_queue(index,q)
 global ctm_valid ctm_sim ctm_cells ctm_lanes
 
 if ~ctm_valid
-    error("The CTM has not been initialized.");
+    error('The CTM has not been initialized.');
 end
 if ctm_sim
-    error("The queue length can not be set after starting the simulation.");
+    error('The queue length can not be set after starting the simulation.');
 end
 
 if index<1 || index>length(ctm_lanes)
-    error("Wrong index of lane.");
+    error('Wrong index of lane.');
 end
 if q<0 || q>ctm_lanes(index).cap
-    error("Wrong queue length.");
+    error('Wrong queue length.');
+end
+
+if ctm_lanes(index).type == 2
+    return;
 end
 
 for i=ctm_lanes(index).d_cell:-1:ctm_lanes(index).o_cell

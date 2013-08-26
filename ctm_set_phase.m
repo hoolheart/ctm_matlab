@@ -12,17 +12,17 @@ function ctm_set_phase(index,f)
 global ctm_valid ctm_sim ctm_links ctm_intersections
 
 if ~ctm_valid
-    error("The CTM has not been initialized.");
+    error('The CTM has not been initialized.');
 end
 if ctm_sim
-    error("The phase can not be directly set after starting the simulation.");
+    error('The phase can not be directly set after starting the simulation.');
 end
 
 if index<1 || index>length(ctm_intersections)
-    error("Wrong index of intersection.");
+    error('Wrong index of intersection.');
 end
 if f<1 || f>size(ctm_intersections(index).phases,1)
-    error("Wrong phase.");
+    error('Wrong phase.');
 end
 
 ctm_intersections(index).phase = f;

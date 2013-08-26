@@ -10,7 +10,7 @@ function phases = ctm_read_phases()
 global ctm_valid ctm_intersections
 
 if ~ctm_valid
-    error("The CTM has not been initialized.");
+    error('The CTM has not been initialized.');
 end
 
 phases = zeros(length(ctm_intersections),1);

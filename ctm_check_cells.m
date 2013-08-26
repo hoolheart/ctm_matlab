@@ -10,7 +10,7 @@ function is_valid = ctm_check_cells()
 global ctm_valid ctm_cells
 
 if ~ctm_valid
-    error("The CTM has not been initialized.");
+    error('The CTM has not been initialized.');
 end
 
 if ctm_cells.length<0 || ctm_cells.length>ctm_cells.cap

@@ -12,10 +12,10 @@ function ctm_start(queues,phases)
 global ctm_valid ctm_sim ctm_lanes ctm_intersections
 
 if ~ctm_valid
-    error("The CTM has not been initialized.");
+    error('The CTM has not been initialized.');
 end
 if ctm_sim
-    error("The simulation has been started.");
+    error('The simulation has been started.');
 end
 
 switch nargin
@@ -23,12 +23,11 @@ case 0
     if ctm_check_phases() && ctm_check_cells()
         ctm_sim = true;
     else
-        error("The phases must be set valid before starting the simulation.");
+        error('The phases must be set valid before starting the simulation.');
     end
-    break;
 case 2
     if length(queues)~=length(ctm_lanes) || length(phases)~=length(ctm_intersections)
-        error("Wrong parameters.");
+        error('Wrong parameters.');
     end
     for i=1:length(queues)
         ctm_set_queue(i,queues(i));
@@ -37,8 +36,7 @@ case 2
         ctm_set_phase(i,phases(i));
     end
     ctm_sim = true;
-    break;
 otherwise
-    error("Wrong number of parameters for starting the simulation.");
+    error('Wrong number of parameters for starting the simulation.');
 end
 
