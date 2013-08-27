@@ -40,6 +40,7 @@ ctm_add_phase(2,...
               0 0.3 1 4 0 2 0 0;...
               0 0.3 0 2 2 3 0 0]);
 
+%%
 % simulation
 ctm_start([35 40 45 35 40 15 58 63 0 0 0 0 0 0],[1 1])
 x = zeros(14,4);
@@ -56,11 +57,10 @@ end
 x(:,3) = ctm_read_lanes();
 ctm_switch_int(1);
 ctm_read_phases()
-for i=36:90
+for i=37:90
     ctm_simulation(1);
 end
 x(:,4) = ctm_read_lanes();
 ctm_switch_int(1);
 ctm_switch_int(2);
 ctm_read_phases()
-

@@ -21,5 +21,9 @@ for i=1:length(ctm_lanes)
     for j=ctm_lanes(i).o_cell:ctm_lanes(i).d_cell
         queues(i) = queues(i)+ctm_cells(j).length;
     end
+    queues(i) = queues(i)+ctm_cells(ctm_lanes(i).in_cell).length;
+    if queues(i)>ctm_lanes(i).cap
+        queues(i) = ctm_lanes(i).cap;
+    end
 end
 
