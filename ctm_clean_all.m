@@ -16,7 +16,6 @@ if ctm_valid
     [ctm_cells.pos_out] = deal(0);
     [ctm_cells.in] = deal(0);
     [ctm_cells.out] = deal(0);
-    [ctm_lanes.length] = deal(0);
     [ctm_intersections.phase] = deal(0);
     for i=1:length(ctm_intersections)
         phases = ctm_intersections(i).phases;
