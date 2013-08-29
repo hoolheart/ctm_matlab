@@ -4,12 +4,13 @@
 % @institute: Lab IRTES-SeT, UTBM, France
 % @date: AUG 22nd, 2013
 
-function ctm_add_lane(t,cap,sat_rate,in_rate,out_rate)
+function index = ctm_add_lane(t,cap,sat_rate,in_rate,out_rate)
 % t(type): 0(normal)|1(input)|2(output); int
 % cap: capacity; int
 % sat_rate: saturation flow rate; float
 % in_rate: input flow rate; float
 % out_rate: rate of exit flow to all input flow; float<1
+% index: return index of the new lane
 
 % declare the variables
 global ctm_valid ctm_sim ctm_cells ctm_links ctm_lanes
@@ -80,4 +81,4 @@ case 2
     ctm_lanes(n_lane+1)=struct('type',2,'cap',Inf,'sat_rate',Inf,'in_rate',0,'out_rate',1,...
                                'in_cell',0,'out_cell',n_cell+1,'o_cell',n_cell+1,'d_cell',n_cell+1,'out_link',0);
 end
-
+index = n_lane+1;

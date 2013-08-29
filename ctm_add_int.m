@@ -4,10 +4,11 @@
 % @institute: Lab IRTES-SeT, UTBM, France
 % @date: AUG 22nd, 2013
 
-function ctm_add_int(in_lanes,out_lanes,cells)
+function index = ctm_add_int(in_lanes,out_lanes,cells)
 % in_lanes: list of input lanes
 % out_lanes: list of output lanes
 % cells: information of the inner cells of the intersection [cap rate;...]
+% index: return the index of new intersection
 
 % declare the variables
 global ctm_valid ctm_sim ctm_cells ctm_lanes ctm_intersections
@@ -45,4 +46,5 @@ inner_cells = n_cell+1:n_cell+n;
 
 ctm_intersections(n_int+1) = struct('in_cells',in_cells,'out_cells',out_cells,'cells',inner_cells,...
                                     'phases',zeros(0,2),'phase',0);
+index = n_int+1;
 
