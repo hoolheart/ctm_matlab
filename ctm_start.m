@@ -39,4 +39,4 @@ case 2
 otherwise
     error('Wrong number of parameters for starting the simulation.');
 end
-
+ctm_reset_delay();

@@ -8,7 +8,7 @@ function ctm_simulation(dt)
 % dt: run time
 
 % declare the variables
-global ctm_valid ctm_sim ctm_w_vf ctm_cells ctm_links
+global ctm_valid ctm_sim ctm_w_vf ctm_vf ctm_veh_length ctm_cells ctm_links
 
 if ~ctm_valid
     error('The CTM has not been initialized.');
@@ -75,4 +75,5 @@ end
 % [ctm_cells.length] = [ctm_cells.length]+[ctm_cells.in]-[ctm_cells.out];
 for i=1:length(ctm_cells)
     ctm_cells(i).length = ctm_cells(i).length+ctm_cells(i).in-ctm_cells(i).out;
+    ctm_cells(i).delay = ctm_cells(i).delay+dt*(ctm_cells(i).length-ctm_cells(i).out*ctm_cells(i).cap*ctm_veh_length/ctm_vf);
 end

@@ -7,7 +7,7 @@
 function ctm_clean_all()
 
 % declare the variables
-global ctm_valid ctm_sim ctm_cells ctm_links ctm_lanes ctm_intersections
+global ctm_valid ctm_sim ctm_cells ctm_links ctm_intersections
 
 if ctm_valid
     ctm_sim = false;
@@ -16,6 +16,7 @@ if ctm_valid
     [ctm_cells.pos_out] = deal(0);
     [ctm_cells.in] = deal(0);
     [ctm_cells.out] = deal(0);
+    [ctm_cells.delay] = deal(0);
     [ctm_intersections.phase] = deal(0);
     for i=1:length(ctm_intersections)
         phases = ctm_intersections(i).phases;

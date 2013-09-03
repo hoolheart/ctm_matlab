@@ -41,7 +41,7 @@ n = size(cells,1);
 c_cap = num2cell(cells(:,1));
 c_rate = num2cell(cells(:,2));
 ctm_cells(n_cell+1:n_cell+n) = struct('type',0,'rate',c_rate,'cap',c_cap,...
-                                      'length',0,'pos_in',0,'pos_out',0,'in',0,'out',0);
+                                      'length',0,'pos_in',0,'pos_out',0,'in',0,'out',0,'delay',0);
 inner_cells = n_cell+1:n_cell+n;
 
 ctm_intersections(n_int+1) = struct('in_cells',in_cells,'out_cells',out_cells,'cells',inner_cells,...

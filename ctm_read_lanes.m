@@ -26,4 +26,3 @@ for i=1:length(ctm_lanes)
         queues(i) = ctm_lanes(i).cap;
     end
 end
-
