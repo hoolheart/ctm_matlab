@@ -1,14 +1,9 @@
-MATLAB Toolkit for Cell-Transmission Model
-====
+# MATLAB Toolkit for Cell-Transmission Model
 
 > By Huide Zhou  
 > Université de Technologie de Belfort-Montbéliard  
-> E-mail: ![prettyage.new@gmail.com][person_gmail]  
+> E-mail: prettyage.new@gmail.com  
 > Version: 0.1
-
-### Table of Content
-
-[TOC]
 
 ### Motive
 
@@ -243,7 +238,6 @@ The functions in `scripts` forder are introduced in this section.
 
     @objective: reset the delay of all cells
 
-[person_gmail]: mailto:prettyage.new@gmail.com
 [cell_nor]: /pics/cell_nor.png
 [cell_in]: /pics/cell_in.png
 [cell_out]: /pics/cell_out.png
