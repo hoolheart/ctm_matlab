@@ -43,3 +43,19 @@ The simulation result should be able to be appropriately read. In detail, the fo
     queues = ctm_read_lanes()
     phases = ctm_read_phases()
 
+### read outputs and inputs
+> Date: February 10th, 2013
+
+For each lane, it is very useful to read its outputs and remaining inputs to evaluate the performance of the system:
+
+1. `outputs = ctm_read_lane_outputs()`: return the number of vehicles that leave the lanes to the outside.
+2. `inputs = ctm_read_lane_intputs()`: return the number of vehicles that are supposed to enter the lanes but prevented by the congestions.
+
+Furthermore, to make the evaluation conviente, the function `ctm_clean_outputs()` is used to clean all output data for the lanes.
+
+### DEBUG: delay calculation
+> Date: February 10th, 2013
+
+The original delay calculation is wrong. Indeed, the formula can be reduced to a very simple form:
+
+	$$D_i(k) = dT(n_i(k)-out_i(k))$$

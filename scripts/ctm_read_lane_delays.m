@@ -21,5 +21,5 @@ for i=1:length(ctm_lanes)
     for j=ctm_lanes(i).o_cell:ctm_lanes(i).d_cell
         delays(i) = delays(i)+ctm_cells(j).delay;
     end
-%     delays(i) = delays(i)+ctm_cells(ctm_lanes(i).in_cell).delay;
+    delays(i) = delays(i)+ctm_cells(ctm_lanes(i).in_cell).delay;
 end

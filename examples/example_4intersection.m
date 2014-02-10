@@ -32,13 +32,16 @@ x = zeros(16,n+1);
 ug = zeros(4,n);
 x(:,1) = [46;56;22;19;12;26;39;39;44;32;21;24;59;57;6;5];
 w = zeros(16,n);
-delay = zeros(1,n+1);
+delay = zeros(1,n);
+output = zeros(24,n);
 for i=1:n
     ug(:,i) = u_n;
     w(:,i) = 0.1*sin(i*pi/2.5)*q_n;
     x(:,i+1) = ctm_4int(q_n+w(:,i),c,ug(:,i));
-    delay(i+1) = ctm_read_total_delay();
+    delay(i) = ctm_read_total_delay();
     ctm_reset_delay();
+    output(:,i) = ctm_read_lane_outputs();
+    ctm_clean_outputs();
 end
 
 % draw queue lengths and delays
@@ -46,5 +49,8 @@ figure;
 plot(0:n,x);
 xlabel('cycle'); ylabel('queue length');
 figure;
-plot(0:n,delay);
+plot(1:n,delay);
 xlabel('cycle'); ylabel('total cyclic delay');
+figure;
+plot(1:n,output);
+xlabel('cycle'); ylabel('output');

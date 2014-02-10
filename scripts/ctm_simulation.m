@@ -74,6 +74,7 @@ end
 % update the cell lengths
 % [ctm_cells.length] = [ctm_cells.length]+[ctm_cells.in]-[ctm_cells.out];
 for i=1:length(ctm_cells)
+%     ctm_cells(i).delay = ctm_cells(i).delay+dt*(ctm_cells(i).length-ctm_cells(i).out*ctm_cells(i).cap*ctm_veh_length/ctm_vf/dt);
+    ctm_cells(i).delay = ctm_cells(i).delay+dt*(ctm_cells(i).length-ctm_cells(i).out);
     ctm_cells(i).length = ctm_cells(i).length+ctm_cells(i).in-ctm_cells(i).out;
-    ctm_cells(i).delay = ctm_cells(i).delay+dt*(ctm_cells(i).length-ctm_cells(i).out*ctm_cells(i).cap*ctm_veh_length/ctm_vf);
 end
