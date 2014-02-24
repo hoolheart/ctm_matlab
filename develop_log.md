@@ -44,7 +44,7 @@ The simulation result should be able to be appropriately read. In detail, the fo
     phases = ctm_read_phases()
 
 ### read outputs and inputs
-> Date: February 10th, 2013
+> Date: February 10th, 2014
 
 For each lane, it is very useful to read its outputs and remaining inputs to evaluate the performance of the system:
 
@@ -54,8 +54,17 @@ For each lane, it is very useful to read its outputs and remaining inputs to eva
 Furthermore, to make the evaluation conviente, the function `ctm_clean_outputs()` is used to clean all output data for the lanes.
 
 ### DEBUG: delay calculation
-> Date: February 10th, 2013
+> Date: February 10th, 2014
 
 The original delay calculation is wrong. Indeed, the formula can be reduced to a very simple form:
 
 	$$D_i(k) = dT(n_i(k)-out_i(k))$$
+
+### add link including more than one lanes
+> Date: February 24th, 2014
+
+The version 1.0 doesn't support adding the link which consists of more than one lanes. For such case, the lanes should be modeled individually, which is complex and inconvenient.
+
+To this end, the following function is added today:
+
+	index = ctm_add_link(t,len,n_lanes,sat_rate,in_rate,out_rate)

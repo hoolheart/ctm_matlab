@@ -8,7 +8,7 @@ function ctm_simulation(dt)
 % dt: run time
 
 % declare the variables
-global ctm_valid ctm_sim ctm_w_vf ctm_vf ctm_veh_length ctm_cells ctm_links
+global ctm_valid ctm_sim ctm_w_vf ctm_cells ctm_links
 
 if ~ctm_valid
     error('The CTM has not been initialized.');

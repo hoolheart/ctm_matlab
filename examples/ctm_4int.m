@@ -20,7 +20,7 @@ Dt(5) = c-t;
 
 for i=1:4
     while Dt(i)>0
-        dt = min([Dt(i),0.5]);
+        dt = min([Dt(i),1]);
         ctm_simulation(dt);
         Dt(i) = Dt(i)-dt;
     end
@@ -28,7 +28,7 @@ for i=1:4
 end
 
 while Dt(5)>0
-    dt = min([Dt(5),0.5]);
+    dt = min([Dt(5),1]);
     ctm_simulation(dt);
     Dt(5) = Dt(5)-dt;
 end
